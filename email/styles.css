@@ -1,0 +1,40 @@
+@font-face {
+	font-family: 'Gotham-Black';
+	src: url('https://irondarrius.github.io/email/fonts/gotham-black-webfont.eot?') format('embedded-opentype'), url('https://irondarrius.github.io/email/fonts/gotham-black-webfont.woff2') format('woff2'), url('https://irondarrius.github.io/email/fonts/gotham-black-webfont.woff') format('woff'), url('https://irondarrius.github.io/email/fonts/gotham-black-webfont.ttf') format('truetype'), url('https://irondarrius.github.io/email/fonts/gotham-black-webfont.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Gotham-Bold';
+	src: url('https://irondarrius.github.io/email/fonts/gotham-bold-webfont.eot?') format('embedded-opentype'), url('https://irondarrius.github.io/email/fonts/gotham-bold-webfont.woff2') format('woff2'), url('https://irondarrius.github.io/email/fonts/gotham-bold-webfont.woff') format('woff'), url('https://irondarrius.github.io/email/fonts/gotham-bold-webfont.ttf') format('truetype'), url('https://irondarrius.github.io/email/fonts/gotham-bold-webfont.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Gotham-Light';
+	src: url('https://irondarrius.github.io/email/fonts/gotham-light-webfont.eot?') format('embedded-opentype'), url('https://irondarrius.github.io/email/fonts/gotham-light-webfont.woff2') format('woff2'), url('https://irondarrius.github.io/email/fonts/gotham-light-webfont.woff') format('woff'), url('https://irondarrius.github.io/email/fonts/gotham-light-webfont.ttf') format('truetype'), url('https://irondarrius.github.io/email/fonts/gotham-light-webfont.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Gotham-Medium';
+	src: url('https://irondarrius.github.io/email/fonts/gotham-medium-webfont.eot?') format('embedded-opentype'), url('https://irondarrius.github.io/email/fonts/gotham-medium-webfont.woff2') format('woff2'), url('https://irondarrius.github.io/email/fonts/gotham-medium-webfont.woff') format('woff'), url('https://irondarrius.github.io/email/fonts/gotham-medium-webfont.ttf') format('truetype'), url('https://irondarrius.github.io/email/fonts/gotham-medium-webfont.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: 'Source Code Pro';
+	font-style: normal;
+	font-weight: 700;
+	src: url('https://irondarrius.github.io/email/fonts/source-code-pro-v21-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.eot'); /* IE9 Compat Modes */
+	src: local(''),
+		 url('https://irondarrius.github.io/email/fonts/source-code-pro-v21-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+		 url('https://irondarrius.github.io/email/fonts/source-code-pro-v21-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.woff2') format('woff2'), /* Super Modern Browsers */
+		 url('https://irondarrius.github.io/email/fonts/source-code-pro-v21-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.woff') format('woff'), /* Modern Browsers */
+		 url('https://irondarrius.github.io/email/fonts/source-code-pro-v21-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.ttf') format('truetype'), /* Safari, Android, iOS */
+		 url('https://irondarrius.github.io/email/fonts/source-code-pro-v21-vietnamese_latin-ext_latin_greek-ext_greek_cyrillic-ext_cyrillic-700.svg#SourceCodePro') format('svg'); /* Legacy iOS */
+}
