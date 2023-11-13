@@ -1,10 +1,9 @@
 """
-Hangman Tutorial Implementation Step 8
+Hangman Tutorial Implementation Step 7
 
 """
 
 import random
-import string
 
 # Randomly select a word to use for the game from a predefined list of words.
 words = ["SWEET","BATHE","TRAVEL","TART","ZINC","SOUND","GORGEOUS","BUMPY","MARK","GOVERNMENT","PREPARE"]
@@ -12,12 +11,9 @@ word = random.choice(words)
 
 
 
-lives = 9                                   # The number of lives
-word_letters = list(word)                   # List of letters in the selected word
-used_letters = set()                        # A collection of every letter that the user has guessed during the game (correct or not)
-alphabet = set(string.ascii_uppercase)      # A collection of every valid letter that the user could guess during the game (all uppercase, without numbers or symbols)
-
-
+lives = 9                       # The number of lives
+word_letters = set(word)       # List of letters in the selected word
+used_letters = set()            # A collection of every letter that the user has guessed during the game (correct or not)
 
 # Start the game, and keep it going as long as the player has not run out of lives,
 # and the user has not guessed the word correctly.
@@ -43,20 +39,17 @@ while lives > 0 and len(word_letters) > 0:
     # the word that was randomly selected. 
     user_letter = input('Guess a letter: ').upper()
 
-    # Proceed IF AND ONLY IF the user typed a letter (not a number, space, or symbol character.)
-    if user_letter in alphabet:
-
+    # If the letter that the user entered has been guessed already,
+    # then let the user know.
+    if user_letter in used_letters:
+        print('\nYou have already used that letter. Guess another letter.')
+    else:
         # Add the user's guessed letter to the list of used letters.
         used_letters.add(user_letter)
 
-        # If the letter that the user entered has been guessed already,
-        # then let the user know.
-        if user_letter in used_letters:
-            print('\nYou have already used that letter. Guess another letter.\n\n')
-
         # If the letter that the user guessed is not in the word, then the user
         # guessed the incorrect letter.
-        elif user_letter not in word_letters:
+        if user_letter not in word_letters:
             print('\nYour letter,', user_letter, 'is not in the word.')
 
             # Subtract one from the lives so that the game does not run infinitely.
@@ -71,10 +64,7 @@ while lives > 0 and len(word_letters) > 0:
             
             # Print two empty lines to the screen to make the next set of text easier to read.
             print("\n\n")
-    # If the user typed anything other than a letter (a number, symbol, space, or empty string),
-    # then tell the user that the input is not correct!
-    else:
-        print('\nThat is not a valid letter.\n\n')
+
 
 # When the code reaches here, then the game has ended. 
 

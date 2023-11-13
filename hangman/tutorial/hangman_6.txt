@@ -12,7 +12,7 @@ word = random.choice(words)
 
 
 lives = 9                       # The number of lives
-word_letters = list(word)       # List of letters in the selected word
+word_letters = set(word)       # List of letters in the selected word
 used_letters = set()            # A collection of every letter that the user has guessed during the game (correct or not)
 
 # Start the game, and keep it going as long as the player has not run out of lives,
@@ -59,7 +59,6 @@ while lives > 0 and len(word_letters) > 0:
         
         # Print two empty lines to the screen to make the next set of text easier to read.
         print("\n\n")
-
 
 # When the code reaches here, then the game has ended. 
 

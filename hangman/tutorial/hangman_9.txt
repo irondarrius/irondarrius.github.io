@@ -1,0 +1,166 @@
+"""
+Hangman Tutorial Implementation Step 9
+
+"""
+
+import random
+import string
+
+# Randomly select a word to use for the game from a predefined list of words.
+words = ["SWEET","BATHE","TRAVEL","TART","ZINC","SOUND","GORGEOUS","BUMPY","MARK","GOVERNMENT","PREPARE"]
+word = random.choice(words)
+
+
+
+lives = 9                                   # The number of lives
+word_letters = set(word)                   # List of letters in the selected word
+used_letters = set()                        # A collection of every letter that the user has guessed during the game (correct or not)
+alphabet = set(string.ascii_uppercase)      # A collection of every valid letter that the user could guess during the game (all uppercase, without numbers or symbols)
+
+# A Dictionary of all hangman pictures to show the user during the game,
+# defined based on the number of lives left. 
+lives_visual_dict = {
+    0: """
+            ___________
+            | /        | 
+            |/        ( )
+            |         /|\\\
+            |         / \\
+            |
+        """,
+    1: """
+            ___________
+            | /        | 
+            |/        ( )
+            |         /|
+            |         / \\
+            |
+        """,
+    2: """
+            ___________
+            | /        | 
+            |/        ( )
+            |          |
+            |         / \\
+            |
+        """,
+    3: """
+            ___________
+            | /        | 
+            |/        ( )
+            |          |
+            |         / 
+            |
+        """,
+    4: """
+            ___________
+            | /        | 
+            |/        ( )
+            |          |
+            |          
+            |
+        """,
+    5: """
+            ___________
+            | /        | 
+            |/        ( )
+            |          
+            |          
+            |
+        """,
+    6: """
+            ___________
+            | /        | 
+            |/        
+            |          
+            |          
+            |
+        """,
+    7: """
+            ___________
+            | /        
+            |/        
+            |          
+            |          
+            |
+        """,
+    8: """
+            |
+            |
+            |
+            |
+            |
+        """,
+    9: "",
+    }
+
+
+# Start the game, and keep it going as long as the player has not run out of lives,
+# and the user has not guessed the word correctly.
+while lives > 0 and len(word_letters) > 0:
+    # Display the current number of lives so far, along with a number of blank lines
+    # corresponding to the randomly-selected word (e.g. four underscores "_ _ _ _ " for the word "SWEET",
+    # or eight underscores "_ _ _ _ _ _ _" for the word "GORGEOUS"
+    print(lives_visual_dict[lives]);
+    print("You have ", str(lives), " lives left and you have used these letters: ")
+    print("Current word: ", end="")
+
+    # Print the correct word/underscore pattern for our randomly-chosen word.
+    # Here, we print the letter (instead of the underscore) if the user guessed
+    # the letter for that position correctly.
+    for letter in word:
+        if letter in used_letters:
+            print(letter, end=" ")
+        else:
+            print("_", end=" ")
+    print("")
+
+    # Ask the user to guess a letter, and then check if that letter is in 
+    # the word that was randomly selected. 
+    user_letter = input('Guess a letter: ').upper()
+
+    # Proceed IF AND ONLY IF the user typed a letter (not a number, space, or symbol character.)
+    if user_letter in alphabet:
+
+        # If the letter that the user entered has been guessed already,
+        # then let the user know.
+        if user_letter in used_letters:
+            print('\nYou have already used that letter. Guess another letter.\n\n')
+
+        else:
+            
+            # Add the user's guessed letter to the list of used letters.
+            used_letters.add(user_letter)
+            # If the letter that the user guessed is not in the word, then the user
+            # guessed the incorrect letter.
+            if user_letter not in word_letters:
+                print('\nYour letter,', user_letter, 'is not in the word.')
+
+                # Subtract one from the lives so that the game does not run infinitely.
+                lives = lives - 1 # (same as lives -= 1)
+            
+            # If the letter that the user guessed IS in the word, then the user
+            # guessed correctly
+            else:
+                # Remove the letter that the user has guessed from the 
+                # list of word letters
+                word_letters.remove(user_letter)
+                
+                # Print two empty lines to the screen to make the next set of text easier to read.
+                print("\n\n")
+    # If the user typed anything other than a letter (a number, symbol, space, or empty string),
+    # then tell the user that the input is not correct!
+    else:
+        print('\nThat is not a valid letter.\n\n')
+
+# When the code reaches here, then the game has ended. 
+
+# If the game ends because the user guesses the word correctly, then display
+# a successful message.
+if lives > 0 and len(word_letters) == 0:
+    print('YAY! You guessed the word', word, '!!')
+
+# If the game ends because the user runs out of lives before forming the correct word, then
+# show a "Game Over" message.
+else:
+    print("You died, sorry! The correct word was", word)

@@ -10,12 +10,12 @@ from hangman_visual import lives_visual_dict
 # Randomly select a word to use for the game from a predefined list of words.
 # Keeep choosing a word randomly until we find a word that contains only letters (no numbers or other symbols)
 word = random.choice(words)
-while re.search("[^A-Za-z]", word):           
+while '-' in word or ' ' in word:           
     word = random.choice(words)
 
 
 lives = 9                                   # The number of lives
-word_letters = list(word)                   # List of letters in the selected word
+word_letters = set(word)                   # List of letters in the selected word
 used_letters = set()                        # A collection of every letter that the user has guessed during the game (correct or not)
 alphabet = set(string.ascii_uppercase)      # A collection of every valid letter that the user could guess during the game (all uppercase, without numbers or symbols)
 
@@ -47,31 +47,31 @@ while lives > 0 and len(word_letters) > 0:
     # Proceed IF AND ONLY IF the user typed a letter (not a number, space, or symbol character.)
     if user_letter in alphabet:
 
-        # Add the user's guessed letter to the list of used letters.
-        used_letters.add(user_letter)
-
         # If the letter that the user entered has been guessed already,
         # then let the user know.
         if user_letter in used_letters:
             print('\nYou have already used that letter. Guess another letter.\n\n')
-
-        # If the letter that the user guessed is not in the word, then the user
-        # guessed the incorrect letter.
-        elif user_letter not in word_letters:
-            print('\nYour letter,', user_letter, 'is not in the word.')
-
-            # Subtract one from the lives so that the game does not run infinitely.
-            lives = lives - 1 # (same as lives -= 1)
-        
-        # If the letter that the user guessed IS in the word, then the user
-        # guessed correctly
         else:
-            # Remove the letter that the user has guessed from the 
-            # list of word letters
-            word_letters.remove(user_letter)
+            # Add the user's guessed letter to the list of used letters.
+            used_letters.add(user_letter)
             
-            # Print two empty lines to the screen to make the next set of text easier to read.
-            print("\n\n")
+            # If the letter that the user guessed is not in the word, then the user
+            # guessed the incorrect letter.
+            if user_letter not in word_letters:
+                print('\nYour letter,', user_letter, 'is not in the word.')
+
+                # Subtract one from the lives so that the game does not run infinitely.
+                lives = lives - 1 # (same as lives -= 1)
+        
+            # If the letter that the user guessed IS in the word, then the user
+            # guessed correctly
+            else:
+                # Remove the letter that the user has guessed from the 
+                # list of word letters
+                word_letters.remove(user_letter)
+                
+                # Print two empty lines to the screen to make the next set of text easier to read.
+                print("\n\n")
     # If the user typed anything other than a letter (a number, symbol, space, or empty string),
     # then tell the user that the input is not correct!
     else:
